@@ -17,6 +17,7 @@ plt.rcParams['toolbar'] = 'None'
 home = str(Path.home())
 iFile = sys.argv[1]
 oFile=(str(os.path.basename(iFile).replace('.nii.gz','.png').replace('.nii','.png')))
+tFile = sys.argv[2]
 
 # Set rounding
 np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
@@ -208,6 +209,6 @@ plt.axis('off')
 # Adjust whitespace
 plt.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=0, hspace=0)
 
-# Display
-plt.show()
-
+# Save preview file for Seer
+tFile=plt.savefig(tFile)
+sys.exit(tFile)
